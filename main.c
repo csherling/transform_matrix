@@ -75,22 +75,27 @@ int main(int argc, char **argv) {
   /* matrix_mult(transform, edges); */
   /* print_matrix(edges); */
   /* draw_lines(edges, s, color); */
-    transform = make_rotZ(45/4.0);
+  transform = make_rotZ(45/4.0);
   
   int k;
   for(k=0;k<32;k++){
     add_edge(edges,0,0,0,250,0,0);
     matrix_mult(transform, edges);
+  }
   
-}
   print_matrix(edges);
-  transform = make_rotX(45.0);
+  printf("\n");
   print_matrix(edges);
-    transform = make_translate(125, 125, 0);
+  transform = make_translate(125, 125, 0);
+  matrix_mult(transform, edges);
+  /* transform = make_rotY(80.0); */
+  /* matrix_mult(transform, edges); */
+  transform = make_rotX(20.0);
+  matrix_mult(transform, edges);
 
+  
   printf("New\n\n");
   fflush(stdout);
-  matrix_mult(transform, edges);
   
   draw_lines(edges, s, color);
   display(s);
