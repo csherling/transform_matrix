@@ -93,15 +93,56 @@ int main(int argc, char **argv) {
   /* matrix_mult(transform, edges); */
   /* transform = make_rotY(45.0); */
   /* matrix_mult(transform, edges); */
-  /* transform = make_rotX(45.0); */
+
+
+  /* add_edge(edges,0,0,0,100,0,0); */
+  /* add_edge(edges,100,0,0,100,100,0); */
+  /* add_edge(edges,100,100,0,0,100,0);   */
+  /* add_edge(edges,0,100,0,0,0,0); */
+  /* add_edge(edges,0,0,100,100,0,100); */
+  /* add_edge(edges,100,0,100,100,100,100); */
+  /* add_edge(edges,100,100,100,0,100,100); */
+  /* add_edge(edges,0,100,100,0,0,100); */
+  /* add_edge(edges,0,0,0,0,0,100); */
+  /* add_edge(edges,0,100,0,0,100,100); */
+  /* add_edge(edges,100,100,0,100,100,100); */
+  /* add_edge(edges,100,0,0,100,0,100); */
+
+  /* clear_screen(s); */
+  /* draw_lines(edges, s, color); */
+  /* display(s); */
+  
+  /* transform = make_translate(100,100,0); */
+  /* matrix_mult(transform, edges); */
+
+  /* clear_screen(s); */
+  /* draw_lines(edges, s, color); */
+  /* display(s); */
+  
+  /* transform = make_rotX(25.0); */
+  /* matrix_mult(transform, edges); */
+
+  /* clear_screen(s); */
+  /* draw_lines(edges, s, color); */
+  /* display(s); */
+  
+  /* transform = make_rotY(25.0); */
+  /* matrix_mult(transform, edges); */
+
+  /* clear_screen(s); */
+  /* draw_lines(edges, s, color); */
+  /* display(s); */
+  
+  /* transform = make_rotZ(25.0); */
   /* matrix_mult(transform, edges); */
 
   
   /* printf("New\n\n"); */
   /* fflush(stdout); */
 
-  parse_file("script", transform, edges, s); 
-  
+  parse_file("script", transform, edges, s);
+
+  clear_screen(s);
   draw_lines(edges, s, color);
   display(s);
   save_extension(s, "transform.png");
