@@ -131,8 +131,8 @@ int main(int argc, char **argv) {
   parse_file("script", transform, edges, s);
 
   clear_screen(s);
-  draw_lines(edges, s, color);
-  display(s);
+  /* draw_lines(edges, s, color); */
+  /* display(s); */
   save_extension(s, "transform.png");
   
   free_matrix( edges );

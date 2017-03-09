@@ -61,7 +61,7 @@ void parse_file ( char * filename,
   FILE *f;
   char * line = (char *)malloc(256);
 
-  char *args[10];
+  char *data[10];
   clear_screen(s);
   /* int com = 0; */
   color color;
@@ -101,10 +101,10 @@ void parse_file ( char * filename,
 	printf("\n%s\n", line);
 
 	char *tmp = line;
-	//add args
-	for (int i = 0; (args[i] = strsep(&tmp, " ")); i++);
+	//add data
+	for (int i = 0; (data[i] = strsep(&tmp, " ")); i++);
 	//add straight to point matrix
-	add_edge( edges, atoi(args[0]), atoi(args[1]), atoi(args[2]), atoi(args[3]), atoi(args[4]), atoi(args[5]) );
+	add_edge( edges, atof(data[0]), atof(data[1]), atof(data[2]), atof(data[3]), atof(data[4]), atof(data[5]) );
 	/* add_edge(edges,atof(strsep(&line," ")),atof(strsep(&line," ")),atof(strsep(&line," ")),atof(strsep(&line," ")),atof(strsep(&line," ")),atof(line)); */
 	printf("\n~~%lf~~\n", atof(line));
 	printf("\n~~%s~~\n", line);
@@ -165,7 +165,8 @@ void parse_file ( char * filename,
 	printf("---8---");
 	clear_screen(s);
 	draw_lines(edges, s, color);
-	save_extension(s, "transform.png");
+	fgets(line, 255, f);
+	save_extension(s, line);
       }
       else if(strncmp(line,"quit",4) == 0){
 	printf("---9---");
