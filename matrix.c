@@ -154,6 +154,7 @@ Returns:
 
 a*b -> b
 */
+
 void matrix_mult(struct matrix *a, struct matrix *b) {
   int r, c;
   struct matrix *tmp;
@@ -162,10 +163,10 @@ void matrix_mult(struct matrix *a, struct matrix *b) {
   for (c=0; c < b->lastcol; c++) {
 
     //copy current col (point) to tmp
-    for (r=0; r < b->rows; r++)      
+    for (r=0; r < b->rows; r++)
       tmp->m[r][0] = b->m[r][c];
     
-    for (r=0; r < b->rows; r++) 
+    for (r=0; r < b->rows; r++)
       b->m[r][c] = a->m[r][0] * tmp->m[0][0] +
 	a->m[r][1] * tmp->m[1][0] +
 	a->m[r][2] * tmp->m[2][0] +

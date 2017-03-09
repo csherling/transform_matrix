@@ -97,7 +97,7 @@ int main(int argc, char **argv) {
 
   /* add_edge(edges,0,0,0,100,0,0); */
   /* add_edge(edges,100,0,0,100,100,0); */
-  /* add_edge(edges,100,100,0,0,100,0);   */
+  /* add_edge(edges,100,100,0,0,100,0); */
   /* add_edge(edges,0,100,0,0,0,0); */
   /* add_edge(edges,0,0,100,100,0,100); */
   /* add_edge(edges,100,0,100,100,100,100); */
@@ -119,21 +119,9 @@ int main(int argc, char **argv) {
   /* draw_lines(edges, s, color); */
   /* display(s); */
   
-  /* transform = make_rotX(25.0); */
-  /* matrix_mult(transform, edges); */
-
-  /* clear_screen(s); */
-  /* draw_lines(edges, s, color); */
-  /* display(s); */
-  
-  /* transform = make_rotY(25.0); */
-  /* matrix_mult(transform, edges); */
-
-  /* clear_screen(s); */
-  /* draw_lines(edges, s, color); */
-  /* display(s); */
-  
-  /* transform = make_rotZ(25.0); */
+  /* matrix_mult(make_rotX(25.0), transform); */
+  /* matrix_mult(make_rotY(25.0), transform); */
+  /* matrix_mult(make_rotZ(25.0), transform); */
   /* matrix_mult(transform, edges); */
 
   

@@ -60,6 +60,8 @@ void parse_file ( char * filename,
 
   FILE *f;
   char * line = (char *)malloc(256);
+
+  char *args[10];
   clear_screen(s);
   /* int com = 0; */
   color color;
@@ -96,7 +98,16 @@ void parse_file ( char * filename,
       if(strncmp(line,"line",4) == 0){
 	printf("---1---");
 	fgets(line, 255, f);
-	add_edge(edges,atof(strsep(&line," ")),atof(strsep(&line," ")),atof(strsep(&line," ")),atof(strsep(&line," ")),atof(strsep(&line," ")),atof(line));
+	printf("\n%s\n", line);
+
+	char *tmp = line;
+	//add args
+	for (int i = 0; (args[i] = strsep(&tmp, " ")); i++);
+	//add straight to point matrix
+	add_edge( edges, atoi(args[0]), atoi(args[1]), atoi(args[2]), atoi(args[3]), atoi(args[4]), atoi(args[5]) );
+	/* add_edge(edges,atof(strsep(&line," ")),atof(strsep(&line," ")),atof(strsep(&line," ")),atof(strsep(&line," ")),atof(strsep(&line," ")),atof(line)); */
+	printf("\n~~%lf~~\n", atof(line));
+	printf("\n~~%s~~\n", line);
       }
       else if(strncmp(line,"scale",5) == 0){
 	printf("---2---");
@@ -112,9 +123,27 @@ void parse_file ( char * filename,
 	printf("---4---");
 	fgets(line, 255, f);
 	char * dir = strsep(&line, " ");
-	if(strcmp(dir,"x") == 0) matrix_mult(make_rotX(atof(line)), transform);
-	else if(strcmp(dir,"y") == 0) matrix_mult(make_rotY(atof(line)), transform);
-	else if(strcmp(dir,"z") == 0) matrix_mult(make_rotZ(atof(line)), transform);
+	if(strncmp(dir,"x", 1) == 0) {
+	  printf("\ngot to x\n");
+	  printf("\n--%lf--\n", atof(line));
+	  print_matrix(make_rotX(atof(line)));
+	  matrix_mult(make_rotX(atof(line)), transform);
+	  print_matrix(transform);
+	}
+	else if(strncmp(dir,"y", 1) == 0) {
+	  printf("\ngot to y\n");
+	  printf("\n--%lf--\n", atof(line));
+	  print_matrix(make_rotY(atof(line)));
+	  matrix_mult(make_rotY(atof(line)), transform);
+	  print_matrix(transform);
+	}
+	else if(strncmp(dir,"z", 1) == 0) {
+	  printf("\ngot to z\n");
+	  printf("\n--%lf--\n", atof(line));
+	  print_matrix(make_rotZ(atof(line)));
+	  matrix_mult(make_rotZ(atof(line)), transform);
+	  print_matrix(transform);
+	}
 	printf("\n%s\n", line);
       }
       else if(strncmp(line,"ident",5) == 0){
@@ -122,7 +151,8 @@ void parse_file ( char * filename,
 	ident(transform);
       }
       else if(strncmp(line,"apply",5) == 0){
-	printf("---6---");
+	printf("\n\n---6---\n\n");
+	print_matrix(transform);
 	matrix_mult(transform, edges);
       }
       else if(strncmp(line,"display",7) == 0){
